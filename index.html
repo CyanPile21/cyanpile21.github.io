@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guess The Frame — 4‑Player Party Game</title>
+  <title>Frame Wars - A 4‑Player Guess The Frame Game</title>
   <style>
     :root{ --bg:#0b1020;--card:#121935;--muted:#93a1c6;--text:#eaf0ff;--accent:#6ae3ff;--good:#2dd4bf;--bad:#f87171;--primary:#8b5cf6;--yellow:#fde047; }
     *{box-sizing:border-box} html,body{height:100%}
@@ -64,7 +64,7 @@
       <div class="title">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l2.39 4.84L20 8.76l-3.5 3.41.83 4.83L12 15.9l-5.33 2.8.83-4.83L4 8.76l5.61-.92L12 3z" stroke="url(#g)" stroke-width="1.2"/><defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#6ae3ff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
         <h1>Guess The Frame — <span class="dim">4‑player party game</span></h1>
-        <span class="pill">15s per question · +10 player · +15 umpire</span>
+        <span class="pill">15sec per question | +10p player | +15p umpire</span>
       </div>
       <div class="row">
         <button class="flat" id="howBtn">How it works</button>
@@ -177,13 +177,13 @@
     <div class="hd"><strong>How it works</strong><button class="ghost" onclick="this.closest('dialog').close()">✕</button></div>
     <div class="bd">
       <ol>
-        <li><strong>Enter 4 players</strong> and choose umpire rotation (each round, one different umpire).</li>
-        <li><strong>Four rounds:</strong> 1) Hollywood (frames/pics), 2) Indian (frames/pics), 3) Dialogues (text), 4) Eyes (frames/pics).</li>
-        <li><strong>15s timer</strong> per question. First correct among the three non‑umpire players gets <strong>+10</strong>.</li>
+        <li><strong>Enter 4 players</strong> and choose umpire rotation (auto/manual, each round - one different umpire).</li>
+        <li><strong>Four rounds:</strong> 1) Hollywood (Movies/Web Series), 2) Indian (Movies/Web Series), 3) Dialogues, 4) Eyes.</li>
+        <li><strong>15sec timer</strong> per question. First correct among the three non‑umpire players gets <strong>+10</strong>.</li>
         <li>If no player gets it, the <strong>umpire may answer</strong>. If correct, umpire gets <strong>+15</strong>.</li>
-        <li>Use the built‑in <strong>starter pack</strong> (this zip) or click <em>Content packs</em> to paste/upload your own JSON with image URLs & answers. You can also add questions during the round.</li>
+        <li>Click <em>Content packs</em> to paste/upload your own JSON with image URLs & answers. Umpire can add questions on the fly in the round screen if needed.</li>
       </ol>
-      <p class="mini">Note: Use your own images or ones you have rights to share. Nothing is uploaded; all runs locally in your browser.</p>
+      <p class="mini">Note: Don't refresh the browser. Refreshing will restart the game. Nothing is uploaded; all runs locally in your browser.</p>
     </div>
   </dialog>
 
