@@ -1,0 +1,348 @@
+{
+  "rounds": [
+    {
+      "name": "Hollywood",
+      "type": "image",
+      "items": [
+        {
+          "imageUrl": "./assets/hollywood/hollywood_01.jpg",
+          "answer": "Inception"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_02.jpg",
+          "answer": "The Dark Knight"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_03.jpg",
+          "answer": "Interstellar"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_04.jpg",
+          "answer": "Avatar"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_05.jpg",
+          "answer": "Titanic"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_06.jpg",
+          "answer": "The Matrix"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_07.jpg",
+          "answer": "Gladiator"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_08.jpg",
+          "answer": "Jurassic Park"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_09.jpg",
+          "answer": "Forrest Gump"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_10.jpg",
+          "answer": "The Godfather"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_11.jpg",
+          "answer": "Fight Club"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_12.jpg",
+          "answer": "Pulp Fiction"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_13.jpg",
+          "answer": "The Avengers"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_14.jpg",
+          "answer": "Iron Man"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_15.jpg",
+          "answer": "The Shawshank Redemption"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_16.jpg",
+          "answer": "The Lord of the Rings"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_17.jpg",
+          "answer": "Mad Max: Fury Road"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_18.jpg",
+          "answer": "La La Land"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_19.jpg",
+          "answer": "Whiplash"
+        },
+        {
+          "imageUrl": "./assets/hollywood/hollywood_20.jpg",
+          "answer": "Dune"
+        }
+      ]
+    },
+    {
+      "name": "Indian",
+      "type": "image",
+      "items": [
+        {
+          "imageUrl": "./assets/indian/indian_01.jpg",
+          "answer": "3 Idiots"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_02.jpg",
+          "answer": "PK"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_03.jpg",
+          "answer": "Lagaan"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_04.jpg",
+          "answer": "Dangal"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_05.jpg",
+          "answer": "Baahubali"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_06.jpg",
+          "answer": "Swades"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_07.jpg",
+          "answer": "Gully Boy"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_08.jpg",
+          "answer": "Kantara"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_09.jpg",
+          "answer": "KGF"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_10.jpg",
+          "answer": "RRR"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_11.jpg",
+          "answer": "Drishyam"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_12.jpg",
+          "answer": "Tumbbad"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_13.jpg",
+          "answer": "Chak De! India"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_14.jpg",
+          "answer": "Barfi!"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_15.jpg",
+          "answer": "Bajrangi Bhaijaan"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_16.jpg",
+          "answer": "Stree"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_17.jpg",
+          "answer": "Andhadhun"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_18.jpg",
+          "answer": "Padman"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_19.jpg",
+          "answer": "Super Deluxe"
+        },
+        {
+          "imageUrl": "./assets/indian/indian_20.jpg",
+          "answer": "Jawan"
+        }
+      ]
+    },
+    {
+      "name": "Dialogues",
+      "type": "text",
+      "items": [
+        {
+          "text": "I'll be back.",
+          "answer": "The Terminator"
+        },
+        {
+          "text": "Why so serious?",
+          "answer": "The Dark Knight"
+        },
+        {
+          "text": "I am Iron Man.",
+          "answer": "Iron Man"
+        },
+        {
+          "text": "May the Force be with you.",
+          "answer": "Star Wars"
+        },
+        {
+          "text": "To infinity and beyond!",
+          "answer": "Toy Story"
+        },
+        {
+          "text": "You talking to me?",
+          "answer": "Taxi Driver"
+        },
+        {
+          "text": "Houston, we have a problem.",
+          "answer": "Apollo 13"
+        },
+        {
+          "text": "With great power…",
+          "answer": "Spider-Man"
+        },
+        {
+          "text": "Run, Forrest, run!",
+          "answer": "Forrest Gump"
+        },
+        {
+          "text": "Say hello to my little friend!",
+          "answer": "Scarface"
+        },
+        {
+          "text": "Mogambo khush hua.",
+          "answer": "Mr. India"
+        },
+        {
+          "text": "Don ko pakadna mushkil hai…",
+          "answer": "Don"
+        },
+        {
+          "text": "Tension lene ka nahi…",
+          "answer": "Munna Bhai M.B.B.S."
+        },
+        {
+          "text": "All iz well!",
+          "answer": "3 Idiots"
+        },
+        {
+          "text": "How’s the josh?",
+          "answer": "Uri: The Surgical Strike"
+        },
+        {
+          "text": "Jaa, Simran, jaa…",
+          "answer": "Dilwale Dulhania Le Jayenge"
+        },
+        {
+          "text": "Kabhi kabhi lagta hai…",
+          "answer": "Sacred Games"
+        },
+        {
+          "text": "Pushpa, naam sunke…",
+          "answer": "Pushpa: The Rise"
+        },
+        {
+          "text": "Badalti duniya ka…",
+          "answer": "Gangs of Wasseypur"
+        },
+        {
+          "text": "Mere paas maa hai.",
+          "answer": "Deewar"
+        }
+      ]
+    },
+    {
+      "name": "Eyes",
+      "type": "image",
+      "items": [
+        {
+          "imageUrl": "./assets/eyes/eyes_01.jpg",
+          "answer": "Leonardo DiCaprio"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_02.jpg",
+          "answer": "Scarlett Johansson"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_03.jpg",
+          "answer": "Robert Downey Jr."
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_04.jpg",
+          "answer": "Priyanka Chopra"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_05.jpg",
+          "answer": "Shah Rukh Khan"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_06.jpg",
+          "answer": "Deepika Padukone"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_07.jpg",
+          "answer": "Aamir Khan"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_08.jpg",
+          "answer": "Ranveer Singh"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_09.jpg",
+          "answer": "Alia Bhatt"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_10.jpg",
+          "answer": "Hrithik Roshan"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_11.jpg",
+          "answer": "Chris Hemsworth"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_12.jpg",
+          "answer": "Emma Stone"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_13.jpg",
+          "answer": "Tom Cruise"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_14.jpg",
+          "answer": "Keanu Reeves"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_15.jpg",
+          "answer": "Nayanthara"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_16.jpg",
+          "answer": "Vijay"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_17.jpg",
+          "answer": "Yash"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_18.jpg",
+          "answer": "Allu Arjun"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_19.jpg",
+          "answer": "Rashmika Mandanna"
+        },
+        {
+          "imageUrl": "./assets/eyes/eyes_20.jpg",
+          "answer": "Kajal Aggarwal"
+        }
+      ]
+    }
+  ]
+}
