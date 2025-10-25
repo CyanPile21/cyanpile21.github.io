@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Frame Wars - A 4‑Player Guess The Frame Game</title>
+  <title>Frame Wars : A 4‑Player Guess The Frame Game</title>
   <style>
     :root{ --bg:#0b1020;--card:#121935;--muted:#93a1c6;--text:#eaf0ff;--accent:#6ae3ff;--good:#2dd4bf;--bad:#f87171;--primary:#8b5cf6;--yellow:#fde047; }
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;background:radial-gradient(1200px 800px at 80% -10%, #1d2758 0%, #0b1020 55%);}
+    body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;background:radial-gradient(1200px 800px at 80% -10%, #1d2758 0%, #0b1020 55%);}    
     a{color:var(--accent)}
     .wrap{max-width:1000px;margin:0 auto;padding:20px 16px 80px;color:var(--text)}
     .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35)}
@@ -15,10 +15,12 @@
     .title{display:flex;align-items:center;gap:10px}
     .title h1{margin:0;font-size:20px;letter-spacing:.2px}
     .title .pill{font-size:12px;background:rgba(255,255,255,.08);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);color:var(--muted)}
-    .grid{display:grid;gap:14px} .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid{display:grid;gap:14px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
     .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     @media (max-width:780px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
-    .pane{padding:16px} .pane h2{margin:0 0 8px;font-size:16px;color:var(--muted);font-weight:600}
+    .pane{padding:16px}
+    .pane h2{margin:0 0 8px;font-size:16px;color:var(--muted);font-weight:600}
     .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     input[type=text], input[type=number], textarea{width:100%;padding:12px 12px;border-radius:12px;background:#0d1330;border:1px solid rgba(255,255,255,.1);color:#fff}
     button{appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:700;letter-spacing:.2px;cursor:pointer;color:#0b1020;background:linear-gradient(180deg,#8b5cf6,#5b21b6);box-shadow:0 8px 20px rgba(91,33,182,.45)}
@@ -33,7 +35,8 @@
     .p-card{padding:12px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);position:relative}
     .p-card .name{font-weight:700}
     .p-card .score{font-size:28px;font-weight:800}
-    .p-card.umpire{outline:2px dashed var(--accent);} .p-card .tag{position:absolute;right:10px;top:10px;font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(106,227,255,.18);color:#bfefff;border:1px solid rgba(106,227,255,.4)}
+    .p-card.umpire{outline:2px dashed var(--accent);}
+    .p-card .tag{position:absolute;right:10px;top:10px;font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(106,227,255,.18);color:#bfefff;border:1px solid rgba(106,227,255,.4)}
     .toolbar{display:flex;gap:10px;flex-wrap:wrap}
     .question{display:flex;flex-direction:column;gap:10px}
     .q-view{position:relative;background:#0a0f25;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;min-height:260px;display:flex;align-items:center;justify-content:center}
@@ -46,15 +49,21 @@
     .buzzbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
     @media (max-width:780px){.buzzbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
     .buzzbar button{padding:14px 12px;font-size:14px}
-    .mini{font-size:11px;color:var(--muted)} .sep{height:1px;background:rgba(255,255,255,.08);margin:12px 0}
+    .mini{font-size:11px;color:var(--muted)}
+    .sep{height:1px;background:rgba(255,255,255,.08);margin:12px 0}
     .footer{position:fixed;left:0;right:0;bottom:0;padding:10px 16px;background:linear-gradient(180deg, rgba(11,16,32,0), rgba(11,16,32,.85));backdrop-filter:blur(6px);}
     .footer .inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:10px;justify-content:space-between}
-    .hidden{display:none} dialog{border:1px solid rgba(255,255,255,.12);background:#0b122d;color:var(--text);border-radius:16px;max-width:760px;width:96%;padding:0}
+    .hidden{display:none}
+    dialog{border:1px solid rgba(255,255,255,.12);background:#0b122d;color:var(--text);border-radius:16px;max-width:760px;width:96%;padding:0}
     dialog .hd{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
-    dialog .bd{padding:14px 16px} .kbd{font:600 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;background:#0b1020;padding:2px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.1)}
-    .pill-sel{display:flex;gap:8px;flex-wrap:wrap} .pill-sel button{background:#0d1330;border:1px solid rgba(255,255,255,.12);color:#cfe3ff}
-    .pill-sel button.active{background:#1d2a78;color:#fff;border-color:#3b82f6} .dim{opacity:.6}
-    .list{display:grid;gap:10px} .list .item{background:#0a0f25;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px}
+    dialog .bd{padding:14px 16px}
+    .kbd{font:600 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;background:#0b1020;padding:2px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.1)}
+    .pill-sel{display:flex;gap:8px;flex-wrap:wrap}
+    .pill-sel button{background:#0d1330;border:1px solid rgba(255,255,255,.12);color:#cfe3ff}
+    .pill-sel button.active{background:#1d2a78;color:#fff;border-color:#3b82f6}
+    .dim{opacity:.6}
+    .list{display:grid;gap:10px}
+    .list .item{background:#0a0f25;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px}
     .item-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
   </style>
 </head>
@@ -63,12 +72,11 @@
     <header>
       <div class="title">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l2.39 4.84L20 8.76l-3.5 3.41.83 4.83L12 15.9l-5.33 2.8.83-4.83L4 8.76l5.61-.92L12 3z" stroke="url(#g)" stroke-width="1.2"/><defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#6ae3ff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
-        <h1>Frame Wars - <span class="dim">A 4‑Player Guess The Frame Game</span></h1>
+        <h1><strong>Frame Wars</strong> : <span class="dim">A 4‑Player Guess The Frame Game</span></h1>
         <span class="pill">15sec per question | +10p player | +15p umpire</span>
       </div>
       <div class="row">
         <button class="flat" id="howBtn">How it works</button>
-        <button class="ghost" id="packBtn">Content packs</button>
         <button class="ghost" id="settingsBtn" title="Edit players, timer, rotation">Settings</button>
       </div>
     </header>
@@ -84,12 +92,13 @@
         </div>
         <div class="row" style="margin-top:10px">
           <div style="flex:1"><label class="badge">Timer (seconds)</label><input type="number" id="timerInput" value="15" min="5" max="90"/></div>
-          <div style="flex:1"><label class="badge">Questions / round</label><input type="number" id="qPerRound" value="6" min="1" max="50"/></div>
+          <div style="flex:1">
+            <label class="badge">Questions / round</label>
+            <div class="p-card" style="padding:10px 12px">7</div>
+          </div>
         </div>
         <div class="row" style="margin-top:12px">
           <button id="startBtn">Start game</button>
-          <button class="ghost" id="loadBtn">Load pack (JSON)</button>
-          <input id="fileInput" type="file" accept="application/json" class="hidden" />
         </div>
       </section>
 
@@ -97,10 +106,7 @@
         <h2>Rounds</h2>
         <div class="list" id="roundList"></div>
         <div class="sep"></div>
-        <div class="row">
-          <button class="flat" id="exportBtn" title="Download your current content as JSON">Export pack</button>
-          <button class="flat" id="resetPackBtn" title="Restore built‑in demo content">Reset to demo pack</button>
-        </div>
+        <!-- Content pack controls removed per request -->
         <p class="mini">Tip: Umpire can add or pick questions on the fly in the round screen.</p>
       </section>
     </div>
@@ -177,25 +183,13 @@
     <div class="hd"><strong>How it works</strong><button class="ghost" onclick="this.closest('dialog').close()">✕</button></div>
     <div class="bd">
       <ol>
-        <li><strong>Enter 4 players</strong> and choose umpire rotation (auto/manual, each round - one different umpire).</li>
-        <li><strong>Four rounds:</strong> 1) Hollywood (Movies/Web Series), 2) Indian (Movies/Web Series), 3) Dialogues, 4) Eyes.</li>
-        <li><strong>15sec timer</strong> per question. First correct among the three non‑umpire players gets <strong>+10</strong>.</li>
+        <li><strong>Enter 4 players</strong> and choose umpire rotation (each round, one different umpire).</li>
+        <li><strong>Four rounds:</strong> 1) Hollywood (frames/pics), 2) Indian (frames/pics), 3) Dialogues (text), 4) Eyes (frames/pics).</li>
+        <li><strong>15s timer</strong> per question. First correct among the three non‑umpire players gets <strong>+10</strong>.</li>
         <li>If no player gets it, the <strong>umpire may answer</strong>. If correct, umpire gets <strong>+15</strong>.</li>
-        <li>Click <em>Content packs</em> to paste/upload your own JSON with image URLs & answers. Umpire can add questions on the fly in the round screen if needed.</li>
+        <li>Content pack controls are hidden; the game uses the built‑in pack (or `pack.json` if you keep it) automatically.</li>
       </ol>
-      <p class="mini">Note: Don't refresh the browser. Refreshing will restart the game. Nothing is uploaded; all runs locally in your browser.</p>
-    </div>
-  </dialog>
-
-  <dialog id="packDlg">
-    <div class="hd"><strong>Content packs (JSON)</strong><button class="ghost" onclick="this.closest('dialog').close()">✕</button></div>
-    <div class="bd">
-      <p>Paste or edit your pack below and click <strong>Replace pack</strong>.</p>
-      <textarea id="packArea" rows="14"></textarea>
-      <div class="row" style="margin-top:8px">
-        <button id="replacePackBtn">Replace pack</button>
-        <button class="flat" id="downloadTplBtn">Download current pack</button>
-      </div>
+      <p class="mini">Note: Images and quotes may be copyrighted. Use your own images or ones you have rights to share. Nothing is uploaded; all runs locally in your browser.</p>
     </div>
   </dialog>
 
@@ -223,74 +217,34 @@
   const $$ = s => Array.from(document.querySelectorAll(s));
   const store = {
     players:[{name:'Player 1',score:0},{name:'Player 2',score:0},{name:'Player 3',score:0},{name:'Player 4',score:0}],
-    rotation:'auto', timerSec:15, qPerRound:6, rounds:[], cur:{roundIdx:0,qIdx:0,umpireIdx:0,started:false,timeLeft:15,interval:null}
+    rotation:'auto', timerSec:15, qPerRound:7, rounds:[], cur:{roundIdx:0,qIdx:0,umpireIdx:0,started:false,timeLeft:15,interval:null}
   };
 
-  // Starter pack is loaded from pack.json if present, else fallback to baked-in object
-  const STARTER_PACK = {"rounds": [{"name": "Hollywood", "type": "image", "items": [{"imageUrl": "./assets/hollywood/hollywood_01.jpg", "answer": "Inception"}, {"imageUrl": "./assets/hollywood/hollywood_02.jpg", "answer": "The Dark Knight"}, {"imageUrl": "./assets/hollywood/hollywood_03.jpg", "answer": "Interstellar"}, {"imageUrl": "./assets/hollywood/hollywood_04.jpg", "answer": "Avatar"}, {"imageUrl": "./assets/hollywood/hollywood_05.jpg", "answer": "Titanic"}, {"imageUrl": "./assets/hollywood/hollywood_06.jpg", "answer": "The Matrix"}, {"imageUrl": "./assets/hollywood/hollywood_07.jpg", "answer": "Gladiator"}, {"imageUrl": "./assets/hollywood/hollywood_08.jpg", "answer": "Jurassic Park"}, {"imageUrl": "./assets/hollywood/hollywood_09.jpg", "answer": "Forrest Gump"}, {"imageUrl": "./assets/hollywood/hollywood_10.jpg", "answer": "The Godfather"}, {"imageUrl": "./assets/hollywood/hollywood_11.jpg", "answer": "Fight Club"}, {"imageUrl": "./assets/hollywood/hollywood_12.jpg", "answer": "Pulp Fiction"}, {"imageUrl": "./assets/hollywood/hollywood_13.jpg", "answer": "The Avengers"}, {"imageUrl": "./assets/hollywood/hollywood_14.jpg", "answer": "Iron Man"}, {"imageUrl": "./assets/hollywood/hollywood_15.jpg", "answer": "The Shawshank Redemption"}, {"imageUrl": "./assets/hollywood/hollywood_16.jpg", "answer": "The Lord of the Rings"}, {"imageUrl": "./assets/hollywood/hollywood_17.jpg", "answer": "Mad Max: Fury Road"}, {"imageUrl": "./assets/hollywood/hollywood_18.jpg", "answer": "La La Land"}, {"imageUrl": "./assets/hollywood/hollywood_19.jpg", "answer": "Whiplash"}, {"imageUrl": "./assets/hollywood/hollywood_20.jpg", "answer": "Dune"}]}, {"name": "Indian", "type": "image", "items": [{"imageUrl": "./assets/indian/indian_01.jpg", "answer": "3 Idiots"}, {"imageUrl": "./assets/indian/indian_02.jpg", "answer": "PK"}, {"imageUrl": "./assets/indian/indian_03.jpg", "answer": "Lagaan"}, {"imageUrl": "./assets/indian/indian_04.jpg", "answer": "Dangal"}, {"imageUrl": "./assets/indian/indian_05.jpg", "answer": "Baahubali"}, {"imageUrl": "./assets/indian/indian_06.jpg", "answer": "Swades"}, {"imageUrl": "./assets/indian/indian_07.jpg", "answer": "Gully Boy"}, {"imageUrl": "./assets/indian/indian_08.jpg", "answer": "Kantara"}, {"imageUrl": "./assets/indian/indian_09.jpg", "answer": "KGF"}, {"imageUrl": "./assets/indian/indian_10.jpg", "answer": "RRR"}, {"imageUrl": "./assets/indian/indian_11.jpg", "answer": "Drishyam"}, {"imageUrl": "./assets/indian/indian_12.jpg", "answer": "Tumbbad"}, {"imageUrl": "./assets/indian/indian_13.jpg", "answer": "Chak De! India"}, {"imageUrl": "./assets/indian/indian_14.jpg", "answer": "Barfi!"}, {"imageUrl": "./assets/indian/indian_15.jpg", "answer": "Bajrangi Bhaijaan"}, {"imageUrl": "./assets/indian/indian_16.jpg", "answer": "Stree"}, {"imageUrl": "./assets/indian/indian_17.jpg", "answer": "Andhadhun"}, {"imageUrl": "./assets/indian/indian_18.jpg", "answer": "Padman"}, {"imageUrl": "./assets/indian/indian_19.jpg", "answer": "Super Deluxe"}, {"imageUrl": "./assets/indian/indian_20.jpg", "answer": "Jawan"}]}, {"name": "Dialogues", "type": "text", "items": [{"text": "I'll be back.", "answer": "The Terminator"}, {"text": "Why so serious?", "answer": "The Dark Knight"}, {"text": "I am Iron Man.", "answer": "Iron Man"}, {"text": "May the Force be with you.", "answer": "Star Wars"}, {"text": "To infinity and beyond!", "answer": "Toy Story"}, {"text": "You talking to me?", "answer": "Taxi Driver"}, {"text": "Houston, we have a problem.", "answer": "Apollo 13"}, {"text": "With great power\u2026", "answer": "Spider-Man"}, {"text": "Run, Forrest, run!", "answer": "Forrest Gump"}, {"text": "Say hello to my little friend!", "answer": "Scarface"}, {"text": "Mogambo khush hua.", "answer": "Mr. India"}, {"text": "Don ko pakadna mushkil hai\u2026", "answer": "Don"}, {"text": "Tension lene ka nahi\u2026", "answer": "Munna Bhai M.B.B.S."}, {"text": "All iz well!", "answer": "3 Idiots"}, {"text": "How\u2019s the josh?", "answer": "Uri: The Surgical Strike"}, {"text": "Jaa, Simran, jaa\u2026", "answer": "Dilwale Dulhania Le Jayenge"}, {"text": "Kabhi kabhi lagta hai\u2026", "answer": "Sacred Games"}, {"text": "Pushpa, naam sunke\u2026", "answer": "Pushpa: The Rise"}, {"text": "Badalti duniya ka\u2026", "answer": "Gangs of Wasseypur"}, {"text": "Mere paas maa hai.", "answer": "Deewar"}]}, {"name": "Eyes", "type": "image", "items": [{"imageUrl": "./assets/eyes/eyes_01.jpg", "answer": "Leonardo DiCaprio"}, {"imageUrl": "./assets/eyes/eyes_02.jpg", "answer": "Scarlett Johansson"}, {"imageUrl": "./assets/eyes/eyes_03.jpg", "answer": "Robert Downey Jr."}, {"imageUrl": "./assets/eyes/eyes_04.jpg", "answer": "Priyanka Chopra"}, {"imageUrl": "./assets/eyes/eyes_05.jpg", "answer": "Shah Rukh Khan"}, {"imageUrl": "./assets/eyes/eyes_06.jpg", "answer": "Deepika Padukone"}, {"imageUrl": "./assets/eyes/eyes_07.jpg", "answer": "Aamir Khan"}, {"imageUrl": "./assets/eyes/eyes_08.jpg", "answer": "Ranveer Singh"}, {"imageUrl": "./assets/eyes/eyes_09.jpg", "answer": "Alia Bhatt"}, {"imageUrl": "./assets/eyes/eyes_10.jpg", "answer": "Hrithik Roshan"}, {"imageUrl": "./assets/eyes/eyes_11.jpg", "answer": "Chris Hemsworth"}, {"imageUrl": "./assets/eyes/eyes_12.jpg", "answer": "Emma Stone"}, {"imageUrl": "./assets/eyes/eyes_13.jpg", "answer": "Tom Cruise"}, {"imageUrl": "./assets/eyes/eyes_14.jpg", "answer": "Keanu Reeves"}, {"imageUrl": "./assets/eyes/eyes_15.jpg", "answer": "Nayanthara"}, {"imageUrl": "./assets/eyes/eyes_16.jpg", "answer": "Vijay"}, {"imageUrl": "./assets/eyes/eyes_17.jpg", "answer": "Yash"}, {"imageUrl": "./assets/eyes/eyes_18.jpg", "answer": "Allu Arjun"}, {"imageUrl": "./assets/eyes/eyes_19.jpg", "answer": "Rashmika Mandanna"}, {"imageUrl": "./assets/eyes/eyes_20.jpg", "answer": "Kajal Aggarwal"}]}]};
+  // Starter pack support (auto‑fetch pack.json if present)
   const LS_KEY='gtf_state_v1';
+  async function tryFetchPack(){ try{ const r=await fetch('./pack.json',{cache:'no-store'}); if(r.ok){ return await r.json(); } }catch(e){} return null; }
 
-  async function tryFetchPack(){
-    try{
-      const r = await fetch('./pack.json', {cache:'no-store'});
-      if(r.ok){ const obj = await r.json(); return obj; }
-    }catch(e){} return null;
-  }
-
-  function save(){
-    const toSave = JSON.stringify({players:store.players, rotation:store.rotation, timerSec:store.timerSec, qPerRound:store.qPerRound, rounds:store.rounds});
-    localStorage.setItem(LS_KEY, toSave);
-  }
-  function load(){
-    const raw = localStorage.getItem(LS_KEY);
-    if(!raw){ store.rounds = STARTER_PACK.rounds; return; }
-    try{ const data = JSON.parse(raw); Object.assign(store, data); }
-    catch(e){ store.rounds = STARTER_PACK.rounds; }
-  }
+  function save(){ const toSave = JSON.stringify({players:store.players, rotation:store.rotation, timerSec:store.timerSec, qPerRound:store.qPerRound, rounds:store.rounds}); localStorage.setItem(LS_KEY, toSave); }
+  function load(){ const raw=localStorage.getItem(LS_KEY); if(raw){ try{ const data=JSON.parse(raw); Object.assign(store, data); }catch(e){} } store.qPerRound = 7; } // force 7
 
   function renderSetup(){
     $('#setupView').classList.remove('hidden'); $('#gameView').classList.add('hidden'); $('#endView').classList.add('hidden');
     const pf=$('#playersForm'); pf.innerHTML='';
-    store.players.forEach((p,i)=>{
-      const d=document.createElement('div'); d.className='p-card';
-      d.innerHTML=`<div class="row"><span class="badge">P${i+1}</span></div><input type="text" value="${p.name}" data-idx="${i}" class="nameInput"/>`;
-      pf.appendChild(d);
-    });
-    pf.querySelectorAll('.nameInput').forEach(inp=> inp.addEventListener('input', e=>{
-      const i=+inp.dataset.idx; store.players[i].name=inp.value; save(); renderScore(); renderBuzzbar();
-    }));
-    const rot=$('#rotationSel'); rot.innerHTML='';
-    ['auto','manual'].forEach(r=>{ const b=document.createElement('button'); b.className='flat'+(store.rotation===r?' active':''); b.textContent=r; b.onclick=()=>{store.rotation=r; save(); renderRotationSel();}; rot.appendChild(b); });
+    store.players.forEach((p,i)=>{ const d=document.createElement('div'); d.className='p-card'; d.innerHTML=`<div class="row"><span class="badge">P${i+1}</span></div><input type="text" value="${p.name}" data-idx="${i}" class="nameInput"/>`; pf.appendChild(d); });
+    pf.querySelectorAll('.nameInput').forEach(inp=> inp.addEventListener('input', e=>{ const i=+inp.dataset.idx; store.players[i].name=inp.value; save(); renderScore(); renderBuzzbar(); }));
+    const rot=$('#rotationSel'); rot.innerHTML=''; ['auto','manual'].forEach(r=>{ const b=document.createElement('button'); b.className='flat'+(store.rotation===r?' active':''); b.textContent=r; b.onclick=()=>{store.rotation=r; save(); renderRotationSel();}; rot.appendChild(b); });
     renderRotationSel();
-    $('#timerInput').value=store.timerSec; $('#qPerRound').value=store.qPerRound;
-    const rl=$('#roundList'); rl.innerHTML='';
-    store.rounds.forEach((r,ri)=>{ const it=document.createElement('div'); it.className='item'; it.innerHTML=`<div class="item-head"><div><strong>${ri+1}. ${r.name}</strong> <span class="badge">${r.type}</span></div><div class="mini">${r.items.length} items</div></div>`; rl.appendChild(it); });
+    $('#timerInput').value = store.timerSec;
+    const rl=$('#roundList'); rl.innerHTML=''; store.rounds.forEach((r,ri)=>{ const it=document.createElement('div'); it.className='item'; it.innerHTML=`<div class="item-head"><div><strong>${ri+1}. ${r.name}</strong> <span class="badge">${r.type}</span></div><div class="mini">${r.items.length} items</div></div>`; rl.appendChild(it); });
     const pi=$('#playersInline'); pi.innerHTML=''; store.players.forEach((p,i)=>{ const row=document.createElement('div'); row.className='row'; row.innerHTML=`<span class="badge">P${i+1}</span><input type="text" value="${p.name}" data-idx="${i}"/>`; pi.appendChild(row); });
     pi.querySelectorAll('input').forEach(inp=> inp.addEventListener('input', e=>{ const i=+inp.dataset.idx; store.players[i].name=inp.value; save(); renderScore(); renderBuzzbar(); $('#playersForm').querySelectorAll('.nameInput')[i].value=inp.value; }));
   }
   function renderRotationSel(){ $$('#rotationSel button').forEach(b=> b.classList.remove('active')); $$('#rotationSel button').find(b=> b.textContent===store.rotation)?.classList.add('active'); }
   function initGame(){ store.cur.roundIdx=0; store.cur.qIdx=0; store.cur.started=false; store.cur.umpireIdx=0; store.players.forEach(p=>p.score=0); save(); renderGame(); }
-  function renderGame(){
-    $('#setupView').classList.add('hidden'); $('#gameView').classList.remove('hidden'); $('#endView').classList.add('hidden');
-    const r=store.rounds[store.cur.roundIdx]; $('#roundName').textContent=`${store.cur.roundIdx+1}. ${r.name}`; $('#umpireTag').textContent=store.players[store.cur.umpireIdx].name;
-    const totalQ=Math.min(store.qPerRound, r.items.length); $('#qProgress').textContent=`Q ${Math.min(store.cur.qIdx+1,totalQ)} / ${totalQ}`;
-    renderQuestion(); renderScore(); renderBuzzbar();
-  }
-  function renderScore(){
-    const sb=$('#scoreBoard'); sb.innerHTML='';
-    store.players.forEach((p,i)=>{ const d=document.createElement('div'); d.className='p-card'+(i===store.cur.umpireIdx?' umpire':''); d.innerHTML=`<div class="tag">${i===store.cur.umpireIdx?'UMPIRE':'PLAYER'}</div><div class="name">${p.name}</div><div class="score" data-score="${i}">${p.score}</div>`; sb.appendChild(d); });
-    const fb=$('#finalBoard'); if(fb){ fb.innerHTML=''; [...store.players].sort((a,b)=>b.score-a.score).forEach((p)=>{ const d=document.createElement('div'); d.className='p-card'; d.innerHTML=`<div class="name">${p.name}</div><div class="score">${p.score}</div>`; fb.appendChild(d); }) }
-  }
+  function renderGame(){ $('#setupView').classList.add('hidden'); $('#gameView').classList.remove('hidden'); $('#endView').classList.add('hidden'); const r=store.rounds[store.cur.roundIdx]; $('#roundName').textContent=`${store.cur.roundIdx+1}. ${r.name}`; $('#umpireTag').textContent=store.players[store.cur.umpireIdx].name; const totalQ=Math.min(store.qPerRound, r.items.length); $('#qProgress').textContent=`Q ${Math.min(store.cur.qIdx+1,totalQ)} / ${totalQ}`; renderQuestion(); renderScore(); renderBuzzbar(); }
+  function renderScore(){ const sb=$('#scoreBoard'); sb.innerHTML=''; store.players.forEach((p,i)=>{ const d=document.createElement('div'); d.className='p-card'+(i===store.cur.umpireIdx?' umpire':''); d.innerHTML=`<div class="tag">${i===store.cur.umpireIdx?'UMPIRE':'PLAYER'}</div><div class="name">${p.name}</div><div class="score" data-score="${i}">${p.score}</div>`; sb.appendChild(d); }); const fb=$('#finalBoard'); if(fb){ fb.innerHTML=''; [...store.players].sort((a,b)=>b.score-a.score).forEach((p)=>{ const d=document.createElement('div'); d.className='p-card'; d.innerHTML=`<div class="name">${p.name}</div><div class="score">${p.score}</div>`; fb.appendChild(d); }) } }
   function renderBuzzbar(){ const bb=$('#buzzBar'); bb.innerHTML=''; store.players.forEach((p,i)=>{ if(i===store.cur.umpireIdx) return; const b=document.createElement('button'); b.className='flat'; b.textContent=`✔ ${p.name} (+10)`; b.onclick=()=>awardPlayer(i,10); bb.appendChild(b); }); }
-  function renderQuestion(){
-    const r=store.rounds[store.cur.roundIdx]; const items=r.items; const totalQ=Math.min(store.qPerRound, items.length); const idx=Math.min(store.cur.qIdx, totalQ-1); const q=items[idx];
-    $('#qProgress').textContent=`Q ${idx+1} / ${totalQ}`;
-    const view=$('#qView'); view.innerHTML='';
-    if(r.type==='text'){ const el=document.createElement('div'); el.className='qtext'; el.textContent=q.text||'(no text)'; view.appendChild(el); }
-    else{ const img=document.createElement('img'); img.alt='Question image'; img.loading='eager'; img.src=q.imageUrl||''; view.appendChild(img); }
-    const wm=document.createElement('div'); wm.className='watermark'; wm.innerHTML=`Umpire: <span id="umpireTag">${store.players[store.cur.umpireIdx].name}</span>`; view.appendChild(wm);
-    $('#answerInput').value=q.answer||''; resetTimer();
-  }
+  function renderQuestion(){ const r=store.rounds[store.cur.roundIdx]; const items=r.items; const totalQ=Math.min(store.qPerRound, items.length); const idx=Math.min(store.cur.qIdx, totalQ-1); const q=items[idx]; $('#qProgress').textContent=`Q ${idx+1} / ${totalQ}`; const view=$('#qView'); view.innerHTML=''; if(r.type==='text'){ const el=document.createElement('div'); el.className='qtext'; el.textContent=q.text||'(no text)'; view.appendChild(el); } else { const img=document.createElement('img'); img.alt='Question image'; img.loading='eager'; img.src=q.imageUrl||''; view.appendChild(img); } const wm=document.createElement('div'); wm.className='watermark'; wm.innerHTML=`Umpire: <span id="umpireTag">${store.players[store.cur.umpireIdx].name}</span>`; view.appendChild(wm); $('#answerInput').value=q.answer||''; resetTimer(); }
   function nextQuestion(){ const r=store.rounds[store.cur.roundIdx]; const totalQ=Math.min(store.qPerRound, r.items.length); if(store.cur.qIdx<totalQ-1){ store.cur.qIdx++; renderGame(); } else { nextRound(); } }
   function prevQuestion(){ if(store.cur.qIdx>0){ store.cur.qIdx--; renderGame(); } }
   function nextRound(){ if(store.cur.roundIdx<store.rounds.length-1){ store.cur.roundIdx++; store.cur.qIdx=0; if(store.rotation==='auto'){ store.cur.umpireIdx=(store.cur.umpireIdx+1)%store.players.length; } renderGame(); } else { endGame(); } }
@@ -302,28 +256,34 @@
   function updateProgress(frac){ setProgressDeg(360*frac); }
   function startTimer(){ if(store.cur.started) return; store.cur.started=true; const total=store.timerSec; const t0=Date.now(); tone(880,0.08); store.cur.interval=setInterval(()=>{ const elapsed=(Date.now()-t0)/1000; let left=Math.max(0, Math.ceil(total - elapsed)); store.cur.timeLeft=left; $('#tLeft').textContent=left; const frac=Math.min(1, elapsed/total); updateProgress(frac); if(left<=0){ clearInterval(store.cur.interval); store.cur.started=false; tone(220,0.25); } }, 100); }
   let actx; function tone(freq,dur){ try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const o=actx.createOscillator(); const g=actx.createGain(); o.connect(g); g.connect(actx.destination); o.frequency.value=freq; g.gain.setValueAtTime(0.02, actx.currentTime); o.start(); g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime+dur); o.stop(actx.currentTime+dur); }catch(e){} }
-  $('#howBtn').onclick=()=>$('#howDlg').showModal(); $('#packBtn').onclick=()=>{ $('#packArea').value=JSON.stringify({rounds:store.rounds}, null, 2); $('#packDlg').showModal(); }; $('#settingsBtn').onclick=()=>$('#settingsDlg').showModal();
-  $('#replacePackBtn').onclick=()=>{ try{ const obj=JSON.parse($('#packArea').value); if(!obj.rounds||!Array.isArray(obj.rounds)) throw new Error('Invalid: rounds[]'); store.rounds=obj.rounds; save(); renderSetup(); $('#packDlg').close(); }catch(e){ alert('Invalid JSON: '+e.message); } };
-  $('#downloadTplBtn').onclick=()=>{ const blob=new Blob([JSON.stringify({rounds:store.rounds}, null, 2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='guess-the-frame-pack.json'; a.click(); };
-  $('#resetPackBtn').onclick=()=>{ if(confirm('Reset to starter pack?')){ store.rounds = STARTER_PACK.rounds; save(); renderSetup(); } };
-  $('#exportBtn').onclick=()=>{ const data=JSON.stringify({rounds:store.rounds}, null, 2); const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([data],{type:'application/json'})); a.download='guess-the-frame-pack.json'; a.click(); };
-  $('#startBtn').onclick=()=>{ store.timerSec=+$('#timerInput').value||15; store.qPerRound=+$('#qPerRound').value||6; save(); initGame(); };
-  $('#loadBtn').onclick=()=>$('#fileInput').click();
-  $('#fileInput').addEventListener('change', async (e)=>{ const f=e.target.files[0]; if(!f) return; const txt=await f.text(); try{ const obj=JSON.parse(txt); store.rounds=obj.rounds; save(); renderSetup(); }catch(err){ alert('Invalid JSON'); } });
-  $('#startQBtn').onclick=startTimer; $('#revealBtn').onclick=()=> alert('Answer: '+($('#answerInput').value||'(not set)')); $('#shuffleBtn').onclick=()=>{ const r=store.rounds[store.cur.roundIdx]; r.items.sort(()=>Math.random()-.5); save(); renderQuestion(); };
-  $('#prevBtn').onclick=prevQuestion; $('#nextBtn').onclick=nextQuestion; $('#skipBtn').onclick=nextQuestion;
-  $('#noneCorrectBtn').onclick=()=> alert('Time up or no correct. If umpire gets it, click "Umpire got it".'); $('#umpireCorrectBtn').onclick=()=> awardUmpire(15);
-  $('#quickAddBtn').onclick=()=>{ const r=store.rounds[store.cur.roundIdx]; if(!r){ alert('No round in progress.'); return; } const ans=$('#quickAnswer').value.trim(); const prm=$('#quickPrompt').value.trim(); if(!ans||!prm){ alert('Need both answer and prompt.'); return; } if(r.type==='text') r.items.push({text:prm, answer:ans}); else r.items.push({imageUrl:prm, answer:ans}); save(); $('#quickAnswer').value=''; $('#quickPrompt').value=''; renderSetup(); alert('Added to current round.'); };
-  window.addEventListener('keydown',(e)=>{ if(e.key===' '){ e.preventDefault(); startTimer(); } if(e.key==='ArrowRight') nextQuestion(); if(e.key==='ArrowLeft') prevQuestion(); });
-  $('#scoreBoard').addEventListener('click',(e)=>{ const card=e.target.closest('.p-card'); if(!card) return; const idx=[...$('#scoreBoard').children].indexOf(card); if(store.rotation==='manual'){ store.cur.umpireIdx=idx; renderScore(); renderBuzzbar(); $('#umpireTag').textContent=store.players[idx].name; } });
-  $('#timerInput').addEventListener('input', ()=>{ store.timerSec=+$('#timerInput').value||15; save(); $('#tLeft').textContent=store.timerSec; });
-  $('#qPerRound').addEventListener('input', ()=>{ store.qPerRound=+$('#qPerRound').value||6; save(); renderSetup(); });
 
+  // Buttons (content pack controls removed)
+  $('#howBtn').onclick=()=>$('#howDlg').showModal();
+  $('#settingsBtn').onclick=()=>$('#settingsDlg').showModal();
+  $('#startBtn').onclick=()=>{ store.timerSec=+$('#timerInput').value||15; store.qPerRound=7; save(); initGame(); };
+  $('#startQBtn').onclick=startTimer; $('#revealBtn').onclick=()=> alert('Answer: '+($('#answerInput').value||'(not set)'));
+  $('#shuffleBtn').onclick=()=>{ const r=store.rounds[store.cur.roundIdx]; r.items.sort(()=>Math.random()-.5); save(); renderQuestion(); };
+  $('#prevBtn').onclick=prevQuestion; $('#nextBtn').onclick=nextQuestion; $('#skipBtn').onclick=nextQuestion;
+  $('#noneCorrectBtn').onclick=()=> alert('Time up or no correct. If umpire gets it, click "Umpire got it".');
+  $('#umpireCorrectBtn').onclick=()=> awardUmpire(15);
+
+  // Quick add
+  $('#quickAddBtn').onclick=()=>{ const r=store.rounds[store.cur.roundIdx]; if(!r){ alert('No round in progress.'); return; } const ans=$('#quickAnswer').value.trim(); const prm=$('#quickPrompt').value.trim(); if(!ans||!prm){ alert('Need both answer and prompt.'); return; } if(r.type==='text') r.items.push({text:prm, answer:ans}); else r.items.push({imageUrl:prm, answer:ans}); save(); $('#quickAnswer').value=''; $('#quickPrompt').value=''; renderSetup(); alert('Added to current round.'); };
+
+  // Keyboard
+  window.addEventListener('keydown', (e)=>{ if(e.key===' '){ e.preventDefault(); startTimer(); } if(e.key==='ArrowRight') nextQuestion(); if(e.key==='ArrowLeft') prevQuestion(); });
+
+  // Manual rotation (click a player card)
+  $('#scoreBoard').addEventListener('click', (e)=>{ const card=e.target.closest('.p-card'); if(!card) return; const idx=[...$('#scoreBoard').children].indexOf(card); if(store.rotation==='manual'){ store.cur.umpireIdx=idx; renderScore(); renderBuzzbar(); $('#umpireTag').textContent=store.players[idx].name; } });
+
+  // Inputs
+  $('#timerInput').addEventListener('input', ()=>{ store.timerSec=+$('#timerInput').value||15; save(); $('#tLeft').textContent=store.timerSec; });
+
+  // Boot
   (async function boot(){
     const remote = await tryFetchPack();
-    store.rounds = (remote && remote.rounds) ? remote.rounds : STARTER_PACK.rounds;
-    const raw = localStorage.getItem(LS_KEY);
-    if(raw){ try{ const data = JSON.parse(raw); Object.assign(store, data); }catch(e){} }
+    store.rounds = (remote && remote.rounds) ? remote.rounds : (window.STARTER_PACK?.rounds || []);
+    load();
     renderSetup();
   })();
   </script>
